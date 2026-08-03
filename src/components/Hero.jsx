@@ -109,7 +109,7 @@ export default function Hero() {
         {/* Center-Aligned Title & Subtitle */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-md mb-3">
-            The whole world awaits.
+            The whole world awaits...
           </h1>
           <p className="text-xl md:text-2xl font-medium text-cyan-300 tracking-wide drop-shadow">
             Discover extraordinary places and create unforgettable memories.
