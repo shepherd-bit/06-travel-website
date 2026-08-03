@@ -18,7 +18,7 @@ const bgImages = [
 
 // Top Categories Placeholder Data
 const categories = [
-  { name: 'Beaches', iconSrc: '' },
+  { name: 'Beaches', iconSrc: './category-icons/beaches.png' },
   { name: 'Deserts', iconSrc: '' },
   { name: 'Mountains', iconSrc: '' },
   { name: 'Iconic Cities', iconSrc: '' },
@@ -177,14 +177,20 @@ export default function Hero() {
             {categories.map((cat, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center justify-center p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
+                className="flex flex-col items-center justify-center p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group"
               >
-                {/* Image Placeholder Box for your icons */}
-                <div className="w-10 h-10 mb-2 flex items-center justify-center rounded-lg bg-slate-800/50 border border-white/10">
+                {/* Transparent Icon Container with Glow Effect */}
+                <div className="w-10 h-10 mb-2 flex items-center justify-center">
                   {cat.iconSrc ? (
-                    <img src={cat.iconSrc} alt={cat.name} className="w-6 h-6 object-contain" />
+                    <img
+                      src={cat.iconSrc}
+                      alt={cat.name}
+                      className="w-8 h-8 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] group-hover:drop-shadow-[0_0_12px_rgba(59,130,246,0.9)] transition-all duration-300"
+                    />
                   ) : (
-                    <span className="text-xs text-slate-400">Icon</span>
+                    <span className="text-xs text-slate-400 drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+                      Icon
+                    </span>
                   )}
                 </div>
                 <span className="text-xs font-semibold text-slate-200">{cat.name}</span>
