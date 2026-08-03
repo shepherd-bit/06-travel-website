@@ -4,16 +4,16 @@ import { FiSearch, FiCalendar, FiUser } from 'react-icons/fi';
 
 // 10 World Tourist Destination Background Images
 const bgImages = [
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1920&q=80',
+  './hero-fades/hero-1.avif',
+  './hero-fades/hero-2.avif',
+  './hero-fades/hero-3.avif',
+  './hero-fades/hero-4.avif',
+  './hero-fades/hero-5.avif',
+  './hero-fades/hero-6.avif',
+  './hero-fades/hero-7.avif',
+  './hero-fades/hero-8.avif',
+  './hero-fades/hero-9.avif',
+  './hero-fades/hero-10.avif',
 ];
 
 // Top Categories Placeholder Data
