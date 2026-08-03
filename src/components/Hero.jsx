@@ -19,15 +19,15 @@ const bgImages = [
 // Top Categories Placeholder Data
 const categories = [
   { name: 'Beaches', iconSrc: './category-icons/beaches.png' },
-  { name: 'Deserts', iconSrc: '' },
-  { name: 'Mountains', iconSrc: '' },
-  { name: 'Iconic Cities', iconSrc: '' },
-  { name: 'Houseboats', iconSrc: '' },
-  { name: 'Countryside', iconSrc: '' },
-  { name: 'Camping', iconSrc: '' },
-  { name: 'Castles', iconSrc: '' },
-  { name: 'Skiing', iconSrc: '' },
-  { name: 'Tropical', iconSrc: '' },
+  { name: 'Deserts', iconSrc: './category-icons/deserts.png' },
+  { name: 'Mountains', iconSrc: './category-icons/mountains.png' },
+  { name: 'Iconic Cities', iconSrc: './category-icons/iconic-cities.png' },
+  { name: 'Houseboats', iconSrc: './category-icons/houseboats.png' },
+  { name: 'Countryside', iconSrc: './category-icons/country-side.png' },
+  { name: 'Camping', iconSrc: './category-icons/camping.png' },
+  { name: 'Castles', iconSrc: './category-icons/castles.png' },
+  { name: 'Skiing', iconSrc: './category-icons/skiing.png' },
+  { name: 'Tropical', iconSrc: './category-icons/tropical.png' },
 ];
 
 // 15 Top Vacation Destinations
