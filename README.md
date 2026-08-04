@@ -3,7 +3,7 @@
 A modern, responsive, and animated travel web application designed to help travelers plan custom itineraries, connect with global travel communities, and discover vacation destinations.
 
 ---
-![Moveo Travel Web App Preview](./public/preview.PNGg)
+![Moveo Travel Web App Preview](./public/preview.PNG)
 
 👉 **[View Live Link](https://shepherd-bit.github.io/06-travel-website/)**
 
