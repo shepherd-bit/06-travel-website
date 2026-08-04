@@ -1,24 +1,136 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
-import { FiChevronLeft, FiChevronRight, FiImage } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiImage, FiTrendingUp } from 'react-icons/fi';
 
 const allPropertyTypes = [
-  { id: 1, name: 'Hotels', imgSrc: '' },
-  { id: 2, name: 'Apartments', imgSrc: '' },
-  { id: 3, name: 'Resorts', imgSrc: '' },
-  { id: 4, name: 'Villas', imgSrc: '' },
-  { id: 5, name: 'Cabins', imgSrc: '' },
-  { id: 6, name: 'Cottages', imgSrc: '' },
-  { id: 7, name: 'Glamping Sites', imgSrc: '' },
-  { id: 8, name: 'Hostels', imgSrc: '' },
-  { id: 9, name: 'Motels', imgSrc: '' },
-  { id: 10, name: 'B&Bs', imgSrc: '' },
-  { id: 11, name: 'Penthouses', imgSrc: '' },
-  { id: 12, name: 'Beach Houses', imgSrc: '' },
-  { id: 13, name: 'Luxury Tents', imgSrc: '' },
-  { id: 14, name: 'Castles', imgSrc: '' },
-  { id: 15, name: 'Treehouses', imgSrc: '' },
-  { id: 16, name: 'Eco Lodges', imgSrc: '' },
+  {
+    id: 1,
+    name: 'Hotels',
+    count: '12,400+ Stays',
+    badge: 'Popular',
+    description: 'Perfect for couples, business travelers, and small families of 2 to 4 guests seeking full-service luxury. Enjoy 24/7 room service, daily housekeeping, and premium amenities designed for effortless, hassle-free stays in central urban hubs.',
+    imgSrc: './property-types/hotels-1.jpg',
+  },
+  {
+    id: 2,
+    name: 'Apartments',
+    count: '8,200+ Stays',
+    badge: 'Trending',
+    description: 'Ideal for extended stays, digital nomads, and medium families of 3 to 5 members. Features fully equipped kitchens, in-unit laundry, and private living areas that offer occupiers the exact comfort, privacy, and flexibility of home.',
+    imgSrc: './property-types/apartments-2.jpg',
+  },
+  {
+    id: 3,
+    name: 'Resorts',
+    count: '4,100+ Stays',
+    badge: 'Top Rated',
+    description: 'Tailored for multi-generational families and groups of 4 to 8 guests craving complete relaxation. Packed with on-site dining, infinity pools, kids clubs, and spa facilities so occupiers never have to leave the property.',
+    imgSrc: './property-types/resorts-3.jpg',
+  },
+  {
+    id: 4,
+    name: 'Villas',
+    count: '3,500+ Stays',
+    badge: 'Luxury',
+    description: 'Built for large families and groups of 6 to 12 people seeking total exclusivity. Offers private swimming pools, expansive gardens, and multiple en-suite bedrooms where guests can host private gatherings in total tranquility.',
+    imgSrc: './property-types/villas-4.jpg',
+  },
+  {
+    id: 5,
+    name: 'Cabins',
+    count: '2,900+ Stays',
+    badge: 'Cozy Pick',
+    description: 'Best suited for romantic couples or small families of 2 to 4 looking for a secluded mountain retreat. Features cozy wood-burning fireplaces, outdoor hot tubs, and direct nature access for occupiers wanting a peaceful escape.',
+    imgSrc: './property-types/cabins-5.jpg',
+  },
+  {
+    id: 6,
+    name: 'Cottages',
+    count: '1,800+ Stays',
+    badge: 'Charming',
+    description: 'Great for small families of 3 to 5 or retirees wanting a calm countryside holiday. Features vintage charm, lush private gardens, and quiet surroundings perfectly tailored for occupiers looking to unwind in a slow-paced environment.',
+    imgSrc: './property-types/cottages-6.jpg',
+  },
+  {
+    id: 7,
+    name: 'Glamping Sites',
+    count: '1,200+ Stays',
+    badge: 'Eco Escape',
+    description: 'Tailored for adventurous couples and young families of 2 to 4 who love nature without sacrificing luxury. Offers heated geodesic domes or canvas tents with comfortable plush beds and stargazing decks immersed in the wild.',
+    imgSrc: './property-types/glamping-sites-7.jpg',
+  },
+  {
+    id: 8,
+    name: 'Hostels',
+    count: '5,600+ Stays',
+    badge: 'Budget Friendly',
+    description: 'Designed for solo backpackers and small social groups of 1 to 3 friends traveling on a budget. Offers shared or private dorms with communal kitchens and vibrant lounges ideal for meeting fellow international travelers.',
+    imgSrc: './property-types/hostels-8.jpg',
+  },
+  {
+    id: 9,
+    name: 'Motels',
+    count: '3,100+ Stays',
+    badge: 'Road Trip',
+    description: 'Engineered for road-trippers, solo drivers, and families of 2 to 4 needing convenient overnight stops. Features direct park-at-your-door access, fast check-ins, and budget rates right off major highway routes.',
+    imgSrc: './property-types/motels-9.jpg',
+  },
+  {
+    id: 10,
+    name: 'B&Bs',
+    count: '2,400+ Stays',
+    badge: 'Homey',
+    description: 'Suited for couples and small family groups of 2 to 3 seeking personalized hospitality. Hosted by friendly locals offering boutique decorated rooms and fresh, home-cooked breakfasts for an authentic cultural stay.',
+    imgSrc: './property-types/B&Bs-10.jpg',
+  },
+  {
+    id: 11,
+    name: 'Penthouses',
+    count: '850+ Stays',
+    badge: 'Exclusive',
+    description: 'Tailored for high-end corporate executives, VIPs, and groups of 2 to 6 who value skyline luxury. Located on top building floors featuring wraparound floor-to-ceiling glass, private rooftop terraces, and high-end tech.',
+    imgSrc: './property-types/penthouse-11.jpg',
+  },
+  {
+    id: 12,
+    name: 'Beach Houses',
+    count: '2,100+ Stays',
+    badge: 'Oceanfront',
+    description: 'Designed for beach-loving families and friends of 4 to 10 guests. Sits directly on the shoreline with private boardwalk access, outdoor showers, and expansive sundecks perfect for coastal summer vacations.',
+    imgSrc: './property-types/beach-house-12.jpg',
+  },
+  {
+    id: 13,
+    name: 'Luxury Tents',
+    count: '940+ Stays',
+    badge: 'Safari Style',
+    description: 'Crafted for eco-travelers and small safari groups of 2 to 4 guests. Features spacious canvas rooms with ensuite bathrooms, hardwood floors, and guided wildlife excursions right outside your doorstep.',
+    imgSrc: './property-types/luxury-tents-13.jpg',
+  },
+  {
+    id: 14,
+    name: 'Castles',
+    count: '420+ Stays',
+    badge: 'Historic',
+    description: 'Uniquely suited for grand celebrations, weddings, and large family reunions of 10 to 20+ guests. Step into living history with grand banqueting halls, sprawling grounds, and majestic royal architecture.',
+    imgSrc: './property-types/castle-14.jpg',
+  },
+  {
+    id: 15,
+    name: 'Treehouses',
+    count: '650+ Stays',
+    badge: 'Unique',
+    description: 'Constructed for adventurous couples or small families of 2 to 3 seeking a childhood dream stay. Elevated high in the forest canopy, offering unique wooden architecture, suspension bridges, and panoramic treetop views.',
+    imgSrc: './property-types/treehouse-15.jpg',
+  },
+  {
+    id: 16,
+    name: 'Eco Lodges',
+    count: '1,500+ Stays',
+    badge: 'Sustainable',
+    description: 'Best for environmentally conscious travelers and nature lovers in groups of 2 to 6. Built with sustainable materials, solar power, and low-impact designs that blend seamlessly into protected natural reserves.',
+    imgSrc: './property-types/eco-lodges-16.jpg',
+  },
 ];
 
 export default function PropertyType() {
@@ -35,7 +147,7 @@ export default function PropertyType() {
 
   const totalItems = memoizedTypes.length;
 
-  const apply3DState = useCallback((targetIndex) => {
+  const applyFlatState = useCallback((targetIndex) => {
     const slides = slideRefs.current.filter(Boolean);
     if (!slides.length) return;
 
@@ -48,69 +160,58 @@ export default function PropertyType() {
         position += totalItems;
       }
 
-      // Base centered position offsets
+      // Default offscreen/hidden state
       let x = '-50%';
       let y = '-50%';
-      let z = -600;
-      let rotationY = 0;
-      let scale = 0.65;
+      let scale = 0.6;
       let opacity = 0;
       let zIndex = -100;
 
-      // CENTER Active Slide
+      // CENTER Active Card (Focus)
       if (position === 0) {
-        z = 0;
-        rotationY = 0;
+        x = '-50%';
         scale = 1;
         opacity = 1;
         zIndex = 100;
       }
-      // Left 1 (Previous)
+      // Left 1 (Straight, slightly smaller & faded)
       else if (position === -1) {
         x = '-155%';
-        z = -180;
-        rotationY = 35;
         scale = 0.82;
-        opacity = 0.7;
+        opacity = 0.65;
         zIndex = 80;
       }
-      // Right 1 (Next)
+      // Right 1 (Straight, slightly smaller & faded)
       else if (position === 1) {
         x = '55%';
-        z = -180;
-        rotationY = -35;
         scale = 0.82;
-        opacity = 0.7;
+        opacity = 0.65;
         zIndex = 80;
       }
       // Far Left 2
       else if (position === -2) {
-        x = '-240%';
-        z = -380;
-        rotationY = 50;
+        x = '-235%';
         scale = 0.68;
-        opacity = 0.35;
+        opacity = 0.25;
         zIndex = 60;
       }
       // Far Right 2
       else if (position === 2) {
-        x = '140%';
-        z = -380;
-        rotationY = -50;
+        x = '135%';
         scale = 0.68;
-        opacity = 0.35;
+        opacity = 0.25;
         zIndex = 60;
       }
 
+      // Animate with GSAP (rotationY explicitly set to 0 for a flat look)
       gsap.to(slide, {
         x: x,
         y: y,
-        z: z,
-        rotationY: rotationY,
+        rotationY: 0,
         scale: scale,
         opacity: opacity,
         zIndex: zIndex,
-        duration: 0.7,
+        duration: 0.65,
         ease: 'power3.out',
         overwrite: 'auto',
       });
@@ -118,8 +219,8 @@ export default function PropertyType() {
   }, [totalItems]);
 
   useEffect(() => {
-    apply3DState(activeIndex);
-  }, [activeIndex, apply3DState]);
+    applyFlatState(activeIndex);
+  }, [activeIndex, applyFlatState]);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % totalItems);
@@ -130,7 +231,7 @@ export default function PropertyType() {
   };
 
   return (
-    <section ref={containerRef} className="py-12 px-6 md:px-12 max-w-7xl mx-auto text-slate-900 bg-white overflow-hidden relative">
+    <section ref={containerRef} className="py-16 px-6 md:px-12 max-w-7xl mx-auto text-slate-900 bg-white overflow-hidden relative">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-6 relative z-10">
         <div>
           <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -160,21 +261,17 @@ export default function PropertyType() {
         </div>
       </div>
 
-      {/* 3D Perspective Stage */}
-      <div
-        style={{ perspective: '1000px' }}
-        className="w-full h-[320px] md:h-[360px] relative flex justify-center items-center"
-      >
-        <div className="w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
+      {/* Stage Container */}
+      <div className="w-full h-[480px] sm:h-[500px] md:h-[520px] relative flex justify-center items-center">
+        <div className="w-full h-full relative">
           {memoizedTypes.map((type, idx) => (
             <div
               key={`${type.id}-${type.originalIndex}`}
               ref={(el) => (slideRefs.current[idx] = el)}
-              className="absolute top-1/2 left-1/2 w-[300px] sm:w-[360px] md:w-[420px] h-[200px] sm:h-[240px] md:h-[260px] rounded-2xl border border-slate-200/80 shadow-md bg-white overflow-hidden p-3 group transition-shadow duration-300 hover:shadow-xl"
-              style={{ backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}
+              className="absolute top-1/2 left-1/2 w-[310px] sm:w-[380px] md:w-[440px] h-[420px] sm:h-[440px] md:h-[460px] rounded-2xl border border-slate-200/80 shadow-md bg-white overflow-hidden p-4 group transition-shadow duration-300 hover:shadow-xl flex flex-col justify-between"
             >
-              {/* Rectangular Image Box */}
-              <div className="relative w-full h-[140px] sm:h-[170px] md:h-[185px] rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center border border-slate-200/60">
+              {/* Image Box with Floating Stats Widget */}
+              <div className="relative w-full h-[170px] sm:h-[190px] md:h-[210px] rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center border border-slate-200/60 flex-shrink-0">
                 {type.imgSrc ? (
                   <img
                     src={type.imgSrc}
@@ -189,13 +286,29 @@ export default function PropertyType() {
                     </span>
                   </div>
                 )}
+
+                {/* Statistics Widget Pill */}
+                <div className="absolute top-2.5 right-2.5 bg-white/90 backdrop-blur-md border border-slate-200/80 px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 text-slate-800">
+                  <FiTrendingUp className="text-blue-600 text-xs" />
+                  <span className="text-[11px] font-bold tracking-tight">{type.count}</span>
+                </div>
               </div>
 
-              {/* Text Label */}
-              <div className="p-3 pt-2">
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                  {type.name}
-                </h3>
+              {/* Text & Detailed Description Block */}
+              <div className="pt-3 flex flex-col justify-between flex-grow">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      {type.name}
+                    </h3>
+                    <span className="text-[10px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">
+                      {type.badge}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed line-clamp-4">
+                    {type.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
